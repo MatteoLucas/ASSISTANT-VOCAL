@@ -8,8 +8,11 @@ def ecouteContinue() :
     print('le mot cle est : ', motCle)
     while entendu != motCle :
         with sr.Microphone() as source :
-            print("En attente")
-            audio = r.listen(source)
+            try :
+                print("En attente")
+                audio = r.listen(source)
+            except sr.UnknownValueError and sr.RequestError as e :
+                print('')
         entendu = r.recognize_google(audio, language="fr-FR")
     ecoutePrecise()
 
