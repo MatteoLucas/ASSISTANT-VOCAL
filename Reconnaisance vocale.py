@@ -16,7 +16,7 @@ def ecouteContinue() :
 def ecoutePrecise() :
     r = sr.Recognizer()
     with sr.Microphone() as source :
-        print("Dites quelques chose")
+        print("Dites quelque chose")
         audio = r.listen(source)
     tache = r.recognize_google(audio, language="fr-FR")
     print("vous avez dit : ", tache)
