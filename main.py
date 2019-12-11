@@ -1,5 +1,6 @@
 import speech_recognition as sr
 import os
+import subprocess
 import win32com.client
 speaker = win32com.client.Dispatch("SAPI.SpVoice")
 
@@ -15,7 +16,10 @@ def ecouteContinue() :
                 audio = r.listen(source)
             except sr.UnknownValueError and sr.RequestError as e :
                 print('')
-        entendu = r.recognize_google(audio, language="fr-FR")
+        try:
+            entendu = r.recognize_google(audio, language="fr-FR")
+        except sr.UnknownValueError :
+            print('')
     ecoutePrecise()
 
 def ecoutePrecise() :
@@ -29,10 +33,17 @@ def ecoutePrecise() :
         except sr.UnknownValueError and sr.RequestError as e:
             print('')
     tache = r.recognize_google(audio, language="fr-FR")
-    print("vous avez dit : ", tache)
+
 
 
 ecouteContinue()
+print("vous avez dit : ", tache)
 meteo = tache.find("météo")
-if meteo != -1 :
-    os.system('python Meteo.py')
+temps = tache.find("temps")
+if meteo != -1 or temps != -1 :
+    os.system("Meteo.py")
+    print('lol')
+
+video = tache.find("vidéo")
+if video != -1 :
+    os.system("videoYoutube.py")

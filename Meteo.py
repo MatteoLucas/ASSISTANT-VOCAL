@@ -28,9 +28,10 @@ def meteoDuJour(lieu):
         print(meteo)
         speaker.Speak(temp)
         speaker.Speak(meteo)
+        os.system('python main.py')
     except KeyError:
         speaker.Speak('lieu introuvable')
-        os.system('python Meteo.py')
+        connaitreLieu()
 
 
 def connaitreLieu() :
@@ -41,16 +42,8 @@ def connaitreLieu() :
             audio = r.listen(source)
         except sr.UnknownValueError and sr.RequestError as e:
             print('')
-    ecoute = r.recognize_google(audio, language="fr-FR")
-    longueur = len(ecoute)
-    lieu = ''
-    for caractere in range(0, longueur):
-        lettre = ord(ecoute[caractere])
-        if lettre == 32:
-            nouvelleLettre = 45
-        else:
-            nouvelleLettre = lettre
-        lieu += chr(nouvelleLettre)
+    lieu = r.recognize_google(audio, language="fr-FR")
+    lieu = lieu.replace(' ','-')
     meteoDuJour(lieu)
 
 
