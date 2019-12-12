@@ -38,14 +38,13 @@ def lancementVideo(sujet) :
     ### On lance la video dans le navigateur
     webbrowser.open('https://www.youtube.com' + lien + '#t=0h0m00s')
 
-    os.system("main.py")
-
     ### On attend la duree de la video
     time.sleep(duree)
 
     ### On ferme le navigateur
     os.system("taskkill /im chrome.exe /f")
 
+    subprocess.run(["python", "main.py"])
 
 def connaitreRecherche() :
     r = sr.Recognizer()

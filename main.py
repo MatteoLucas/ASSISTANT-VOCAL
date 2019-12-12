@@ -37,7 +37,7 @@ def ecoutePrecise() :
 
 
 ecouteContinue()
-print("vous avez dit : ", tache)
+
 meteo = tache.find("météo")
 temps = tache.find("temps")
 if meteo != -1 or temps != -1 :
@@ -46,4 +46,5 @@ if meteo != -1 or temps != -1 :
 
 video = tache.find("vidéo")
 if video != -1 :
-    os.system("videoYoutube.py")
+    subprocess.run(["python", "videoYoutube.py"])
+    print("vous avez dit : ", tache)
