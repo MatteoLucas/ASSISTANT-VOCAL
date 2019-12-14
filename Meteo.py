@@ -1,4 +1,4 @@
-import requests
+import r
 import win32com.client
 import os
 import speech_recognition as sr
