@@ -24,14 +24,12 @@ def lancementVideo(sujet) :
     lien = video['href']
 
     ### On recupere la duree de la video au format H:MM:S
-    duree = video.span()[1].string
+    duree = html.findAll('span')[155].string
 
     ### On transfome la duree au format S
-
     if duree.count(':') == 1 :
         duree = '00:' + duree
     dureeH, dureeM, dureeS = duree.split(':')
-
 
     duree = int(dureeH) * 3600 + int(dureeM) * 60 + int(dureeS)
 
@@ -58,5 +56,4 @@ def connaitreRecherche() :
     sujet = sujet.replace(' ','+')
     lancementVideo(sujet)
 
-print('lol')
 connaitreRecherche()
