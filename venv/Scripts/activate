@@ -37,7 +37,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="C:\Users\matte\Documents\PROJET FINAL\venv"
+VIRTUAL_ENV="C:\Users\matte\PycharmProjects\PROJET-FINAL\venv"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"
