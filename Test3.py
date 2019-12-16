@@ -93,8 +93,8 @@ def ecoutePrecise() :
 
 i=1
 while i==1 :
-    ecouteContinue()
-
+    #ecouteContinue()
+    tache = 'vidéo'
     meteo = tache.find("météo")
     temps = tache.find("temps")
     if meteo != -1 or temps != -1 :
